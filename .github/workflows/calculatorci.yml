@@ -5,21 +5,20 @@ name : Calculator CI
 on:
   push:
 
-
 jobs:
   test:
     runs-on : ubuntu-latest
 
 
-  steps:
-    - name: Checkout Repository
-      uses: actions/Checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Build Docker Image
-      run : docker build -t calculator .
+      - name: Build Docker Image
+        run : docker build -t calculator .
 
-    - name : Run test
-      run : docker run --rm calculator  
+      - name : Run test
+        run : docker run --rm calculator  
 
 
 
