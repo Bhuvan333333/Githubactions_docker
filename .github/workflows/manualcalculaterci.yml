@@ -6,6 +6,8 @@ on:
 jobs:
   manual_test :
     runs-on : ubuntu-latest
+  env :
+    APP_ENV : ${{vars.APP_ENV}}
 
     steps:
       - name : Checkout Repository
@@ -15,8 +17,6 @@ jobs:
         run : echo "This application is running in ${{vars.APP_ENV}}" #  APP_ENV : ${{vars.APP_ENV}} , for secrets ${{secrets.APP_ENV}}
 
       - name : Environment variable through github repository
-        env :
-          APP_ENV : ${{vars.APP_ENV}}
         run : echo "Application is Running in $APP_ENV" 
 
       - name : Build Docker Image
