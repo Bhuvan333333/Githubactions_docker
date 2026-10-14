@@ -7,14 +7,12 @@ jobs:
   manual_test :
     runs-on : ubuntu-latest
 
-    env :
-      APP_ENV : testing
-
     steps:
       - name : Checkout Repository
         uses : actions/checkout@v4
+
       - name : Environment Variable through yml file
-        run : echo "This application is running in $APP_ENV" #  APP_ENV : ${{vars.APP_ENV}} , for secrets ${{secrets.APP_ENV}}
+        run : echo "This application is running in ${{vars.APP_ENV"}} #  APP_ENV : ${{vars.APP_ENV}} , for secrets ${{secrets.APP_ENV}}
 
       - name : Environment variable through github repository
         env :
