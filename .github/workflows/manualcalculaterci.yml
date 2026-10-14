@@ -25,4 +25,4 @@ jobs:
         run : docker build -t manual_calculator .
       
       - name : Run test
-        run : docker run --rm -e APP_ENV = "$APP_ENV" manual_calculator
+        run : docker run --rm -e APP_ENV="$APP_ENV" manual_calculator
