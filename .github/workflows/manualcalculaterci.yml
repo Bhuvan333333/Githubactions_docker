@@ -20,12 +20,11 @@ jobs:
         run : echo "Application is Running in $APP_ENV" 
 
       - name : Build Docker Image
-        run : docker buil -t manual_calculator .
+        run : docker bui -t manual_calculator .
       
       - name : Run test
         run : docker run --rm -e APP_ENV="$APP_ENV" manual_calculator
 
-      
       
       - name: Notify on workflow failure
         if: ${{ failure() }}
