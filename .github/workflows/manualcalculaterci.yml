@@ -20,7 +20,7 @@ jobs:
         run : echo "Application is Running in $APP_ENV" 
 
       - name : Build Docker Image
-        run : docker bui -t manual_calculator .
+        run : docker build -t manual_calculator .
       
       - name : Run test
         run : docker run --rm -e APP_ENV="$APP_ENV" manual_calculator
@@ -34,3 +34,13 @@ jobs:
           curl -sS -X POST "$WEBHOOK_URL" \
             -H "Content-Type: application/json" \
             -d "{\"application\":\"calculator\",\"status\":\"failed\",\"repository\":\"$GITHUB_REPOSITORY\",\"workflow\":\"$GITHUB_WORKFLOW\",\"run_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}"
+
+      - name : pass test
+        if: ${{ pass() }}
+        env:
+          WEBHOOK_URL: ${{ secrets.FAILURE_WEBHOOK_URL }}
+        run: |
+          curl -sS -X POST "$WEBHOOK_URL" \
+            -H "Content-Type: application/json" \
+            -d "{\"application\":\"calculator\",\"status\":\"failed\",\"repository\":\"$GITHUB_REPOSITORY\",\"workflow\":\"$GITHUB_WORKFLOW\",\"run_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}"
+
