@@ -6,8 +6,8 @@ on:
 jobs:
   manual_test :
     runs-on : ubuntu-latest
-  env :
-    APP_ENV : ${{vars.APP_ENV}} 
+    env :
+      APP_ENV : ${{vars.APP_ENV}} 
 
     steps:
       - name : Checkout Repository
@@ -20,7 +20,7 @@ jobs:
         run : echo "Application is Running in $APP_ENV" 
 
       - name : Build Docker Image
-        run : docker build -t manual_calculator .
+        run : docker buil -t manual_calculator .
       
       - name : Run test
         run : docker run --rm -e APP_ENV="$APP_ENV" manual_calculator
