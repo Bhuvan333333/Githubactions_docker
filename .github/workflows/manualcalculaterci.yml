@@ -34,13 +34,3 @@ jobs:
           curl -sS -X POST "$WEBHOOK_URL" \
             -H "Content-Type: application/json" \
             -d "{\"application\":\"calculator\",\"status\":\"failed\",\"repository\":\"$GITHUB_REPOSITORY\",\"workflow\":\"$GITHUB_WORKFLOW\",\"run_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}"
-
-      - name : pass test
-        if: ${{ pass() }}
-        env:
-          WEBHOOK_URL: ${{ secrets.FAILURE_WEBHOOK_URL }}
-        run: |
-          curl -sS -X POST "$WEBHOOK_URL" \
-            -H "Content-Type: application/json" \
-            -d "{\"application\":\"calculator\",\"status\":\"failed\",\"repository\":\"$GITHUB_REPOSITORY\",\"workflow\":\"$GITHUB_WORKFLOW\",\"run_url\":\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\"}"
-
