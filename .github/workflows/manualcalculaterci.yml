@@ -7,7 +7,7 @@ jobs:
   manual_test :
     runs-on : ubuntu-latest
     env :
-      APP_ENV : ${{vars.APP_ENV}}
+      APP_ENV : ${{vars.APP_ENV}} 
 
     steps:
       - name : Checkout Repository
