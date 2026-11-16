@@ -13,14 +13,13 @@ RUN apt-get update && \
 # Copy requirements
 COPY requirements.txt .
 
-# Upgrade Python packaging tools
-RUN python -m pip install --no-cache-dir --upgrade \
-    pip \
-    "setuptools>=80.10.2" \
-    "wheel>=0.46.2"
-
 # Install application dependencies
 RUN python -m pip install --no-cache-dir -r requirements.txt
+
+# Upgrade Python packaging tools
+RUN python -m pip install --no-cache-dir --upgrade "setuptools>=78.1.1"
+
+RUN python -m pip show setuptools
 
 # Copy application files
 COPY . .
