@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608    #v4
 
       - name: Semgrep SAST Scan
         run: |
@@ -25,7 +25,7 @@ jobs:
         run : docker build -t calculator .
 
       - name: Trivy Image Vulnerability Scan
-        uses: aquasecurity/trivy-action@v0.36.0
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 #v0.36.0
         with:
           image-ref: calculator
           format: table
