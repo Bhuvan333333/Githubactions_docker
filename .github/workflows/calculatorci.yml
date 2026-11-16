@@ -13,9 +13,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Semgrep SAST Scan
+        run: |
+          docker run --rm \
+            -v "$PWD:/src" \
+            -w /src \
+            semgrep/semgrep \
+            scan --config auto --error .
+
       - name: Build Docker Image
         run : docker build -t calculator .
 
+      - name: Trivy Image Vulnerability Scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: calculator
+          format: table
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          exit-code: '1'
 
       - name : Run test
         run : docker run --rm calculator  
