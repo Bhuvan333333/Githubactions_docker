@@ -25,6 +25,11 @@ RUN python -m pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY . .
 
+RUN useradd --create-home appuser
+
+RUN chown -R appuser:appuser /app
+
+USER appuser
 # Run tests
 CMD ["pytest"]
 
