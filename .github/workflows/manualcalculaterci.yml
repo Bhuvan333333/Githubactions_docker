@@ -44,7 +44,7 @@ jobs:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 #v4
       - uses: aws-actions/setup-sam@f84ec7d548307efafe33230528756de3c5841a17 #v2
 
-      - uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6b1b7af274dc9e5c4ddf66878 #v4
+      - uses: aws-actions/configure-aws-credentials@ff717079ee2060e4bcee96c4779b553acc87447c #v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
