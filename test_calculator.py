@@ -1,6 +1,6 @@
 import pytest
 
-from calculator import add, sub, mul
+from src.calculator import add, sub, mul
 
 def test_add():
     result = add(2,2)

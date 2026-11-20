@@ -1,0 +1,13 @@
+version = 0.1
+
+["samconfig.toml".deploy.parameters]
+stack_name = "calculator-stack"
+resolve_s3 = true
+s3_prefix = "calculator-stack"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
+
+["samconfig.toml".global.parameters]
+region = "ap-southeast-2"
