@@ -52,4 +52,4 @@ jobs:
 
       - run: sam build
 
-      - run: sam deploy --guided --stack-name calculator-stack --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset --resolve-s3
+      - run: sam deploy --stack-name calculator-stack --region ap-southeast-2 --capabilities CAPABILITY_IAM --no-confirm-changeset --no-fail-on-empty-changeset --resolve-s3
